@@ -9,8 +9,12 @@ inline int Count(const string& s)
 
     for (size_t i = 0; i + 2 < s.length(); i++)
     {
-        if (s[i] == '+' && s[i + 2] == '-')
+        if (s.compare(i, 3, "OGO") == 0 ||
+            s.compare(i, 3, "AGA") == 0)
+        {
             count++;
+            i += 2;
+        }
     }
 
     return count;
@@ -23,9 +27,10 @@ inline string Replace(const string& s)
     for (size_t i = 0; i < s.length(); i++)
     {
         if (i + 2 < s.length() &&
-            s[i] == '+' && s[i + 2] == '-')
+            (s.compare(i, 3, "OGO") == 0 ||
+                s.compare(i, 3, "AGA") == 0))
         {
-            result += "****";
+            result += "**";
             i += 2;
         }
         else
